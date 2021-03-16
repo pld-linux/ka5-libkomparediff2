@@ -1,15 +1,15 @@
-%define		kdeappsver	19.04.1
+%define		kdeappsver	20.12.3
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		libkomparediff2
 Summary:	libkomparediff2
 Name:		ka5-%{kaname}
-Version:	19.04.1
+Version:	20.12.3
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
-Source0:	http://download.kde.org/stable/applications/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	1dd4307b5d3ed7f03dadc6b8c9001a47
+Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
+# Source0-md5:	8dad13a29c1c7fdb145795d4f6f5a831
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Test-devel >= 5.4.0
@@ -75,6 +75,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %ghost %{_libdir}/libkomparediff2.so.5
 %attr(755,root,root) %{_libdir}/libkomparediff2.so.5.2
+%{_datadir}/qlogging-categories5/libkomparediff2.categories
 
 %files devel
 %defattr(644,root,root,755)

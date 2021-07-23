@@ -34,6 +34,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Library to compare files and strings, used in Kompare and KDevelop.
 
+%description -l pl.UTF-8
+Biblioteka do porównynwania plików i łańcuchów znaków, używana
+przez Kompare i KDevelop.
+
 %package devel
 Summary:	Header files for %{kaname} development
 Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających %{kaname}

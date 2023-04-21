@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	22.12.3
+%define		kdeappsver	23.04.0
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		libkomparediff2
 Summary:	libkomparediff2
 Name:		ka5-%{kaname}
-Version:	22.12.3
-Release:	2
+Version:	23.04.0
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	f8d37adbd18edba1beb5a69e50883dad
+# Source0-md5:	cc04977dfd2d8408278b8cc9d8289d1a
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5Test-devel >= 5.4.0
@@ -87,11 +87,11 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
 %ghost %{_libdir}/libkomparediff2.so.5
-%attr(755,root,root) %{_libdir}/libkomparediff2.so.5.2
+%attr(755,root,root) %{_libdir}/libkomparediff2.so.*.*
 %{_datadir}/qlogging-categories5/libkomparediff2.categories
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/libkomparediff2
 %{_libdir}/cmake/LibKompareDiff2
 %{_libdir}/libkomparediff2.so
+%{_includedir}/KompareDiff2

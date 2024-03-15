@@ -1,33 +1,33 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	24.01.95
+%define		kdeappsver	23.08.4
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		libkomparediff2
 Summary:	libkomparediff2
 Name:		ka5-%{kaname}
-Version:	24.01.95
-Release:	0.1
+Version:	23.08.4
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
-Source0:	https://download.kde.org/unstable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	af2e3a64e31cc5be177e75efbb8dada7
+Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
+# Source0-md5:	4d6c5c341a727b2d0e187e25d2c24b06
 URL:		http://www.kde.org/
-BuildRequires:	Qt6Core-devel >= %{qtver}
-BuildRequires:	Qt6Test-devel >= 5.4.0
-BuildRequires:	Qt6Widgets-devel >= 5.4.0
+BuildRequires:	Qt5Core-devel >= %{qtver}
+BuildRequires:	Qt5Test-devel >= 5.4.0
+BuildRequires:	Qt5Widgets-devel >= 5.4.0
 BuildRequires:	cmake >= 3.20
 BuildRequires:	gettext-devel
-BuildRequires:	kf6-extra-cmake-modules >= %{kframever}
-BuildRequires:	kf6-kcodecs-devel >= %{kframever}
-BuildRequires:	kf6-kconfig-devel >= %{kframever}
-BuildRequires:	kf6-kcoreaddons-devel >= %{kframever}
-BuildRequires:	kf6-ki18n-devel >= %{kframever}
-BuildRequires:	kf6-kio-devel >= %{kframever}
-BuildRequires:	kf6-kxmlgui-devel >= %{kframever}
+BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
+BuildRequires:	kf5-kcodecs-devel >= %{kframever}
+BuildRequires:	kf5-kconfig-devel >= %{kframever}
+BuildRequires:	kf5-kcoreaddons-devel >= %{kframever}
+BuildRequires:	kf5-ki18n-devel >= %{kframever}
+BuildRequires:	kf5-kio-devel >= %{kframever}
+BuildRequires:	kf5-kxmlgui-devel >= %{kframever}
 BuildRequires:	ninja
-BuildRequires:	qt6-build >= %{qtver}
+BuildRequires:	qt5-build >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	shared-mime-info
 BuildRequires:	tar >= 1:1.22
@@ -38,8 +38,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Library to compare files and strings, used in Kompare and KDevelop.
 
 %description -l pl.UTF-8
-Biblioteka do porównynwania plików i łańcuchów znaków, używana przez
-Kompare i KDevelop.
+Biblioteka do porównynwania plików i łańcuchów znaków, używana
+przez Kompare i KDevelop.
 
 %package devel
 Summary:	Header files for %{kaname} development
@@ -62,8 +62,7 @@ Pliki nagłówkowe dla programistów używających %{kaname}.
 	-G Ninja \
 	%{!?with_tests:-DBUILD_TESTING=OFF} \
 	-DHTML_INSTALL_DIR=%{_kdedocdir} \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-	-DQT_MAJOR_VERSION=6
+	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
 %ninja_build -C build
 
 %if %{with tests}
@@ -87,10 +86,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %ghost %{_libdir}/libkomparediff2.so.5
 %attr(755,root,root) %{_libdir}/libkomparediff2.so.*.*
-%{_datadir}/qlogging-categories6/libkomparediff2.categories
+%{_datadir}/qlogging-categories5/libkomparediff2.categories
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/KompareDiff2
 %{_libdir}/cmake/LibKompareDiff2
 %{_libdir}/libkomparediff2.so
+%{_includedir}/KompareDiff2
